@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+      - JELLYFIN_PublishedServerUrl=${JELLYFIN_SERVER}
+    volumes:
+      - ${JELLYFIN_CONFIG}:/config
+      - ${JELLYFIN_TV_SHOWS}:/data/tvshows
+      - ${JELLYFIN_MOVIES}:/data/movies
+    ports:
+      - 8096:8096
+      - 8920:8920
+      - 7359:7359/udp
+    restart: unless-stopped
