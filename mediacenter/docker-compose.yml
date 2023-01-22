@@ -9,9 +9,10 @@ services:
       - TZ=${TIMEZONE}
       - JELLYFIN_PublishedServerUrl=${JELLYFIN_SERVER}
     volumes:
-      - ${JELLYFIN_CONFIG}:/config
-      - ${JELLYFIN_TV_SHOWS}:/data/tvshows
-      - ${JELLYFIN_MOVIES}:/data/movies
+      - ${JELLYFIN_CONFIG_PATH}:/config
+      - ${JELLYFIN_MEDIA_PATH}/tvshows:/data/tvshows
+      - ${JELLYFIN_MEDIA_PATH}/movies:/data/movies
+      - ${JELLYFIN_MEDIA_PATH}/music:/data/music
     ports:
       - 8096:8096
       - 8920:8920
