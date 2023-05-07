@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3'
 services:
   homeassistant:
     container_name: homeassistant
@@ -7,6 +7,7 @@ services:
       - ${HOMEASSISTANT_CONFIG}:/config
       - /etc/localtime:/etc/localtime:ro
       - /dev/serial/by-id/:/dev/serial/by-id
+      - /run/dbus:/run/dbus:ro
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
     restart: unless-stopped
