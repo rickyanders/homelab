@@ -34,9 +34,9 @@ services:
     depends_on:
       - vpn
 
-  jackett:
-    container_name: jackett
-    image: linuxserver/jackett:latest
+  prowlarr:
+    container_name: prowlarr
+    image: linuxserver/prowlarr
     restart: unless-stopped
     network_mode: service:vpn
     environment:
@@ -44,9 +44,7 @@ services:
       - PGID=${PGID}
       - TZ=${TIMEZONE}
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ${HTPC_CONFIG_PATH}/jackett:/config
-      - ${HTPC_DOWNLOAD_PATH}/torrent-blackhole:/downloads
+      - ${HTPC_CONFIG_PATH}/prowlarr:/config
     depends_on:
       - vpn
 
